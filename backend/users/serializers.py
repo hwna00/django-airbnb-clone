@@ -12,7 +12,7 @@ class TinyUserSerializer(ModelSerializer):
         )
 
 
-class PrivateUserSerialzier(ModelSerializer):
+class PrivateUserSerializer(ModelSerializer):
     class Meta:
         model = User
         exclude = (

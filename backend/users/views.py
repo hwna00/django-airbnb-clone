@@ -13,19 +13,19 @@ class Me(APIView):
 
     def get(self, request):
         user = request.user
-        serializer = serializers.PrivateUserSerialzier(user)
+        serializer = serializers.PrivateUserSerializer(user)
         return Response(serializer.data)
 
     def put(self, request):
         user = request.user
-        serializer = serializers.PrivateUserSerialzier(
+        serializer = serializers.PrivateUserSerializer(
             user,
             data=request.data,
             partial=True,
         )
         if serializer.is_valid():
             user = serializer.save()
-            serializer = serializers.PrivateUserSerialzier(user)
+            serializer = serializers.PrivateUserSerializer(user)
             return Response(serializer.data)
         else:
             return Response(serializer.errors)
@@ -37,12 +37,12 @@ class Users(APIView):
         if not password:
             raise ParseError
 
-        serializer = serializers.PrivateUserSerialzier(data=request.data)
+        serializer = serializers.PrivateUserSerializer(data=request.data)
         if serializer.is_valid():
             user = serializer.save()
             user.set_password(password)
             user.save()
-            serializer = serializers.PrivateUserSerialzier(user)
+            serializer = serializers.PrivateUserSerializer(user)
             return Response(serializer.data)
         else:
             return Response(serializer.errors)
@@ -54,7 +54,7 @@ class PublicUser(APIView):
             user = User.objects.get(username=username)
         except User.DoesNotExist:
             raise NotFound
-        serializer = serializers.PrivateUserSerialzier(user)
+        serializer = serializers.PrivateUserSerializer(user)
         return Response(serializer.data)
 
 
