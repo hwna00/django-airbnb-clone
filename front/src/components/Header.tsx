@@ -24,11 +24,11 @@ export default function Header() {
     onOpen: onSignUpOpen,
   } = useDisclosure()
 
-  const { colorMode, toggleColorMode } = useColorMode()
+  const { toggleColorMode } = useColorMode()
   const logoColor = useColorModeValue('red.500', 'red.200')
   const Icon = useColorModeValue(FaMoon, FaSun)
   return (
-    <HStack py="5" px="10" borderBottomWidth={1} justifyContent="space-between">
+    <HStack py="5" px="40" borderBottomWidth={1} justifyContent="space-between">
       <Box color={logoColor}>
         <FaAirbnb size={'48'} />
       </Box>
