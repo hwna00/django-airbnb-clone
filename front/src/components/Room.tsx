@@ -34,7 +34,12 @@ export default function Room() {
           <Text as={'b'} fontSize={'md'} noOfLines={1}>
             Geoje-myeon, Geoje-si, 경상남도, 한국
           </Text>
-          <HStack spacing={1}>
+          <HStack
+            spacing={1}
+            _hover={{
+              color: 'yellow.400',
+            }}
+          >
             <FaStar fontSize={'14px'} />
             <Text>5.0</Text>
           </HStack>

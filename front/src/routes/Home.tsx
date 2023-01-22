@@ -7,6 +7,8 @@ import {
   Text,
   HStack,
   Button,
+  Skeleton,
+  SkeletonText,
 } from '@chakra-ui/react'
 import { FaRegHeart, FaStar } from 'react-icons/fa'
 import Room from '../components/Room'
@@ -29,12 +31,32 @@ export default function Home() {
         '2xl': 'repeat(5, 1fr)',
       }}
     >
-      {[
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1,
-      ].map((index) => (
-        <Room key={index} />
-      ))}
+      <Box>
+        <Skeleton rounded={'2xl'} mb={8} height={200} />
+        <SkeletonText w={'70%'} noOfLines={2} mb={7} />
+        <SkeletonText w={'40%'} noOfLines={1} />
+      </Box>
+      <Room></Room>
+      <Box>
+        <Skeleton rounded={'2xl'} mb={3} height={200} />
+        <SkeletonText w={'70%'} noOfLines={3} />
+      </Box>
+      <Box>
+        <Skeleton rounded={'2xl'} mb={3} height={200} />
+        <SkeletonText w={'70%'} noOfLines={3} />
+      </Box>
+      <Box>
+        <Skeleton rounded={'2xl'} mb={3} height={200} />
+        <SkeletonText w={'70%'} noOfLines={3} />
+      </Box>
+      <Box>
+        <Skeleton rounded={'2xl'} mb={3} height={200} />
+        <SkeletonText w={'70%'} noOfLines={3} />
+      </Box>
+      <Box>
+        <Skeleton rounded={'2xl'} mb={3} height={200} />
+        <SkeletonText w={'70%'} noOfLines={3} />
+      </Box>
     </Grid>
   )
 }
