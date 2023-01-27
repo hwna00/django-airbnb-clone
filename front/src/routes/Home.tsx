@@ -1,16 +1,4 @@
-import {
-  Box,
-  Grid,
-  Heading,
-  Image,
-  VStack,
-  Text,
-  HStack,
-  Button,
-  Skeleton,
-  SkeletonText,
-} from '@chakra-ui/react'
-import { FaRegHeart, FaStar } from 'react-icons/fa'
+import { Box, Grid, Skeleton, SkeletonText } from '@chakra-ui/react'
 import Room from '../components/Room'
 
 export default function Home() {
