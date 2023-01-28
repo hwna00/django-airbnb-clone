@@ -9,6 +9,7 @@ import {
   VStack,
 } from '@chakra-ui/react'
 import { FaRegHeart, FaStar } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 interface RoomsProps {
   imageURL: string
@@ -17,9 +18,11 @@ interface RoomsProps {
   city: string
   country: string
   price: number
+  pk: number
 }
 
 export default function Room({
+  pk,
   imageURL,
   name,
   rating,
@@ -29,41 +32,43 @@ export default function Room({
 }: RoomsProps) {
   const gray = useColorModeValue('gray.600', 'gray.300')
   return (
-    <VStack alignItems={'flex-start'}>
-      <Box position={'relative'} overflow={'hidden'} mb={4} rounded={'2xl'}>
-        <Image minH={200} src={imageURL} />
-        <Button
-          variant={'unstyled'}
-          position={'absolute'}
-          top={0}
-          right={0}
-          color={'white'}
-        >
-          <FaRegHeart size={'20px'} />
-        </Button>
-      </Box>
-      <Box>
-        <Grid templateColumns={'5fr 1fr'} gap={2}>
-          <Text as={'b'} fontSize={'md'} noOfLines={1}>
-            {name}
-          </Text>
-          <HStack
-            spacing={1}
-            _hover={{
-              color: 'yellow.400',
-            }}
+    <Link to={`rooms/${pk}`}>
+      <VStack alignItems={'flex-start'}>
+        <Box position={'relative'} overflow={'hidden'} mb={4} rounded={'2xl'}>
+          <Image minH={200} src={imageURL} />
+          <Button
+            variant={'unstyled'}
+            position={'absolute'}
+            top={0}
+            right={0}
+            color={'white'}
           >
-            <FaStar fontSize={'14px'} />
-            <Text>{rating}</Text>
-          </HStack>
-        </Grid>
+            <FaRegHeart size={'20px'} />
+          </Button>
+        </Box>
+        <Box>
+          <Grid templateColumns={'5fr 1fr'} gap={2}>
+            <Text as={'b'} fontSize={'md'} noOfLines={1}>
+              {name}
+            </Text>
+            <HStack
+              spacing={1}
+              _hover={{
+                color: 'yellow.400',
+              }}
+            >
+              <FaStar fontSize={'14px'} />
+              <Text>{rating}</Text>
+            </HStack>
+          </Grid>
+          <Text fontSize={'sm'} color={gray}>
+            {city}, {country}
+          </Text>
+        </Box>
         <Text fontSize={'sm'} color={gray}>
-          {city}, {country}
+          <Text as={'b'}>${price}</Text> / 박
         </Text>
-      </Box>
-      <Text fontSize={'sm'} color={gray}>
-        <Text as={'b'}>${price}</Text> / 박
-      </Text>
-    </VStack>
+      </VStack>
+    </Link>
   )
 }
