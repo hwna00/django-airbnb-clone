@@ -3,6 +3,7 @@ import axios from 'axios'
 
 const instance = axios.create({
   baseURL: 'http://127.0.0.1:8000/api/v1/',
+  withCredentials: true,
 })
 
 export const getRooms = () =>
@@ -10,12 +11,15 @@ export const getRooms = () =>
 
 export const getRoom = ({ queryKey }: QueryFunctionContext) => {
   const [_, roomPk] = queryKey
-  return instance.get(`rooms/${roomPk}`).then((response) => response.data)
+  return instance.get(`rooms/${roomPk}/`).then((response) => response.data)
 }
 
 export const getRoomReviews = ({ queryKey }: QueryFunctionContext) => {
   const [_, roomPk] = queryKey
   return instance
-    .get(`rooms/${roomPk}/reviews`)
+    .get(`rooms/${roomPk}/reviews/`)
     .then((response) => response.data)
 }
+
+export const getMe = () =>
+  instance.get(`users/me`).then((response) => response.data)
